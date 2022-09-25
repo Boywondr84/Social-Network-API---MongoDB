@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "social-network-api---mongodb",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boywondr84/Social-Network-API---MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Boywondr84/Social-Network-API---MongoDB/issues"
+  },
+  "homepage": "https://github.com/Boywondr84/Social-Network-API---MongoDB#readme"
+}
