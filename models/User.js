@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         unique: true
     },
 
-    userThoughts: [
+    thoughts: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Thought'
