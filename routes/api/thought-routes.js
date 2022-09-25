@@ -7,5 +7,7 @@ router
 .route('/:userId')
 .post(addThought)
 
+router
+.route('/:userId/:thoughtId')
 
 module.exports = router;
