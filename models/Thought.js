@@ -23,6 +23,13 @@ const ThoughtSchema = new Schema({
         required: true
     },
 
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ]
+
     // reactions: [ReactionSchema]
 },
     {
