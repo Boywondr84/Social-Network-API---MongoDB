@@ -53,7 +53,21 @@ const thoughtController = {
             res.json(dbUserData);
         })
         .catch(err => res.json(err));
+    },
+
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate({ _id: params.thoughtId }, body, {new: true})
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: "That thought doesn't exist" });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.status(400).json(err));
     }
-}
+};
+
+    // deleteThought({})
 
 module.exports = thoughtController;
