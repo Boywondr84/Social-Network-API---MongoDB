@@ -3,7 +3,8 @@ const {
     getAllThoughts,
     getOneThought,
     addThought,
-    updateThought
+    updateThought,
+    deleteThought
 } = require('../../controllers/thought-controller');
 
 router
@@ -14,10 +15,10 @@ router
 .route('/:thoughtId')
 .get(getOneThought)
 .put(updateThought)
+.delete(deleteThought)
 
 router
 .route('/:userId')
-// .get(getOneThought)
 .post(addThought)
 
 router
