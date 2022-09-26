@@ -16,6 +16,25 @@ const thoughtController = {
             res.status(400).json(err);
         });
     },
+    getOneThought({ params }, res) {
+        Thought.findOne({ _id: params.thoughtId })
+        .populate({
+            path: 'thoughts',
+            select: '-__v'
+        })
+        .select('-__v')
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: "That thought has escaped me" });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    },
 
     addThought({ params, body} , res) {
         Thought.create(body)
