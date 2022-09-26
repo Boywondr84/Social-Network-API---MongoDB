@@ -7,12 +7,15 @@ const ReactionSchema = new Schema({
         default: () => new Types.ObjectId()
     },
 
-    writtenBy: {
-        type: String
+    reactionBody: {
+        type: String,
+        required: true,
+        // 280 char. max
     },
 
-    replyBody: {
-        type: String
+    userName: {
+        type: String,
+        required: true
     },
 
     createdAt: {
