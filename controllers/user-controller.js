@@ -5,7 +5,7 @@ const userController = {
         User.find({})
         .populate({
             path: 'thoughts',
-            select: '-__v'
+            select: '-__v',
         })
         .select('-__v')
         .sort({ _id: -1 })
@@ -55,7 +55,8 @@ const userController = {
     },
 
     deleteUser({ params }, res) {
-        User.findOneAndDelete({ _id: params. id })
+        User.findOneAndDelete(
+            { _id: params. id })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: "User can not be found" });
@@ -64,7 +65,28 @@ const userController = {
             res.json(dbUserData);
         })
         .catch(err => res.status(400).json(err));
+    },
+
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { $push: { friends: params.friendId}},
+            { new: true })
+            .populate({
+                path: 'friends',
+                select: '-__v'
+            })
+            .select('-__v')
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: "No user found" });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => res.json(err));
     }
 };
+
 
 module.exports = userController;

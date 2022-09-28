@@ -10,7 +10,7 @@ const ReactionSchema = new Schema({
     reactionBody: {
         type: String,
         required: true,
-        minLength: [1, 'Must be at least one character'],
+        minLength: 1,
         maxLength: 280
         // 280 char. max
     },
@@ -37,7 +37,7 @@ const ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
-        minLength: [1, 'Must be at least one character'],
+        minLength: 1,
         maxLength: 280
         // 1 -280 characters
     },
@@ -70,10 +70,11 @@ const ThoughtSchema = new Schema({
         id: false
     }
 );
+
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
 
-const Thought = model('Thought', ThoughtSchema);
+const Thought = model ('Thought', ThoughtSchema);
 
 module.exports = Thought;
