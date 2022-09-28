@@ -10,6 +10,8 @@ const ReactionSchema = new Schema({
     reactionBody: {
         type: String,
         required: true,
+        minLength: [1, 'Must be at least one character'],
+        maxLength: 280
         // 280 char. max
     },
 
@@ -35,6 +37,8 @@ const ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
+        minLength: [1, 'Must be at least one character'],
+        maxLength: 280
         // 1 -280 characters
     },
 
